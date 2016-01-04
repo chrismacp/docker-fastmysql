@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+
+echo -ne "Starting mysql ... ";
+touch /var/run/mysqld/mysqld.pid
+chmod 777 /var/run/mysqld/mysqld.pid
+mysqld --user=root --skip-networking --pid-file=/var/run/mysqld/mysqld.pid > /dev/null 2>&1 &
+mysqladmin --silent --wait=30 ping > /dev/null
+echo "Done";
