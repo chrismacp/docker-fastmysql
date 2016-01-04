@@ -1,9 +1,9 @@
 FastMySQL for Docker
 ====================
 
-''This documentation is copied from https://github.com/zanox/docker-mysql which this project was based upon.''
-
 [![](https://badge.imagelayers.io/chrismacp/fastmysql:latest.svg)](https://imagelayers.io/?images=chrismacp/fastmysql:latest 'chrismacp Image Layers')
+
+**This documentation is copied from https://github.com/zanox/docker-mysql which this project was based upon.**
 
 This is a MySQL Database image tuned for fast start up times, designed to be
 extended for purposes of providing fixtures.
