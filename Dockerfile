@@ -38,8 +38,8 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 
 # Wrap your MySQL commands with start-mysql and stop-mysql
 # Anything inside will have access to MySQL server
-RUN start-mysql && \
-    echo "UPDATE user SET host = '%' WHERE user = 'root';" | mysql mysql \
+RUN start-mysql \
+    && echo "DELETE FROM user WHERE user = 'root'; CREATE USER 'root'@'%'; GRANT ALL ON *.* TO 'root'@'%';" | mysql mysql \
     && ./mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql mysql --force && \
     stop-mysql
 
