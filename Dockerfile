@@ -39,7 +39,8 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 # Wrap your MySQL commands with start-mysql and stop-mysql
 # Anything inside will have access to MySQL server
 RUN start-mysql && \
-    ./mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql mysql --force && \
+    echo "UPDATE user SET host = '%' WHERE user = 'root';" | mysql mysql \
+    && ./mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql mysql --force && \
     stop-mysql
 
 EXPOSE 3306
